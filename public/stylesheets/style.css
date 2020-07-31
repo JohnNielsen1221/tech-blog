@@ -14,17 +14,22 @@ html {
 
 a {
     text-decoration: none;
-    color: #225ca3;
+    color: rgb(177, 189, 166);
     font-weight: bold;
     transition: color .1s;
+    cursor: pointer;
 }
 
 a:hover {
     color: #3486eb;
 }
 
+ul {
+    list-style: none;
+}
+
 button {
-    background-color: #225ca3;
+    /* background-color: #225ca3; */
     border: 0;
     padding: 1%;
     color: white;
@@ -47,7 +52,7 @@ textarea,
 input {
     padding: .5%;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid blue;
 }
 
 textarea:focus,
@@ -113,7 +118,7 @@ main {
     padding: 0;
     cursor: pointer;
     text-decoration: none;
-    color: #225ca3;
+    color: rgb(177, 189, 166);
     font-size: 100%;
     font-weight: bold;
     transition: color .1s;
@@ -134,28 +139,27 @@ main {
 }
 
 .post {
+    border: .1rem solid black;
     margin-bottom: 2%;
     line-height: 150%;
 }
 
-.post .title span {
-    font-style: italic;
-    font-size: 90%;
-    color: #7d7d7d;
+.title {
+    background-color: black;
+    /* justify-content: space-between; */
+    color: rgb(177, 189, 166);
+    padding: .5rem;
+    font-size: 100%;
+    
+}
+
+.title span {
+float: right;
 }
 
 .edit-link {
     display: block;
     margin: -1.5% 0 2% 0;
-}
-
-.upvote-btn {
-    background-color: #197d0f;
-    transition: background-color .1s;
-}
-
-.upvote-btn:hover {
-    background-color: #1f9c13;
 }
 
 .comment-form {
@@ -171,24 +175,42 @@ main {
     background-color: #fff5eb;
 }
 
+.meta {
+    padding: .5rem;
+}
+
 .comment .meta {
     font-size: 90%;
     margin-bottom: .5%;
     opacity: .6;
+    padding: .5rem;
+}
+
+.post-section {
+    border: .2rem solid black;
+}
+
+.post-section h2 {
+    background: black;
+    margin: 0;
+    padding: .5rem;
+    color: rgb(177, 189, 166);
+}
+
+.new-post-form {
+    padding: .5rem;
 }
 
 .new-post-form input {
-    width: 300px;
+    width: 100%;
+}
+
+.new-post-form button {
+    width: 100%;
+    background-color: grey;
 }
 
 .edit-post-form {
     margin-bottom: 5%;
 }
 
-footer {
-    border-top: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    padding: 1%;
-    font-size: 110%;
-}
