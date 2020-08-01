@@ -14,15 +14,14 @@ html {
 
 a {
     text-decoration: none;
-    color: rgb(177, 189, 166);
-    font-weight: bold;
+    color: white;
     transition: color .1s;
     cursor: pointer;
 }
 
-a:hover {
+/* a:hover {
     color: #3486eb;
-}
+} */
 
 ul {
     list-style: none;
