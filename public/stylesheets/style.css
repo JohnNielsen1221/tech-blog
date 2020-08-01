@@ -29,11 +29,9 @@ ul {
 }
 
 button {
-    /* background-color: #225ca3; */
-    border: 0;
-    padding: 1%;
+    background-color: #225ca3;
+    padding: .5rem;
     color: white;
-    font-weight: bold;
     transition: background-color .1s;
     cursor: pointer;
     border-radius: 5px;
@@ -164,6 +162,16 @@ float: right;
 
 .comment-form {
     margin-bottom: 5%;
+}
+
+.comment-form textarea {
+    width: 100%;
+}
+
+.comment-form button {
+    width: 100%;
+    background-color: grey;
+    font-size: x-large;
 }
 
 .comment {

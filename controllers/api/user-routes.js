@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Vote } = require("../../models");
+const { User, Post, Comment } = require("../../models");
 const withAuth = require('../../utils/auth');
 
 
@@ -26,9 +26,8 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: Post,
-                attributes: ['id', 'title', 'post_url', 'created_at']
+                attributes: ['id', 'title', 'content', 'created_at']
             },
-            // include the Comment model here:
             {
                 model: Comment,
                 attributes: ['id', 'comment_text', 'created_at'],
@@ -36,12 +35,6 @@ router.get('/:id', (req, res) => {
                     model: Post,
                     attributes: ['title']
                 }
-            },
-            {
-                model: Post,
-                attributes: ['title'],
-                through: Vote,
-                as: 'voted_posts'
             }
         ]
     })
@@ -60,7 +53,6 @@ router.get('/:id', (req, res) => {
 
 // POST /api/users
 router.post('/', withAuth, (req, res) => {
-    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
     User.create({
         username: req.body.username,
         email: req.body.email,
@@ -75,8 +67,13 @@ router.post('/', withAuth, (req, res) => {
                 res.json(dbUserData);
             });
         })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
+//Post /api/users/login
 router.post('/login', (req, res) => {
     User.findOne({
         where: {
@@ -96,7 +93,6 @@ router.post('/login', (req, res) => {
         }
 
         req.session.save(() => {
-            // declare session variables
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
@@ -106,6 +102,7 @@ router.post('/login', (req, res) => {
     });
 });
 
+//POST api/users/logout
 router.post('/logout', withAuth, (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
@@ -118,9 +115,6 @@ router.post('/logout', withAuth, (req, res) => {
 
 // PUT /api/users/1
 router.put('/:id', withAuth, (req, res) => {
-    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-
-    // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
     User.update(req.body, {
         individualHooks: true,
         where: {

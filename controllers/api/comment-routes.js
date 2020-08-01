@@ -2,32 +2,17 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-
-//Don't know if this GET is correct
+//Get comments
 router.get('/', (req, res) => {
-    Comment.findAll({
-        attributes: [
-            'id',
-            'comment_text',
-            'post_id',
-            'title',
-            'created_at'
-        ],
-        order: [['created_at', 'DESC']],
-        include: [
-            {
-                model: User,
-                attributes: ['username']
-            }
-        ]
-    })
+    Comment.findAll({})
         .then(dbCommentData => res.json(dbCommentData))
         .catch(err => {
             console.log(err);
-            res.status(500).json(err);
+            res.status(400).json(err);
         });
 });
 
+//Create Comment
 router.post('/', withAuth, (req, res) => {
     // check the session
     if (req.session) {
@@ -45,6 +30,7 @@ router.post('/', withAuth, (req, res) => {
     }
 });
 
+//Delete comment
 router.delete('/:id', withAuth, (req, res) => {
     Comment.destroy({
         where: {
