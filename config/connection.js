@@ -3,6 +3,8 @@ const Sequelize = require('sequelize');
 
 // require('dotenv').config();
 
+if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
+
 //Create connection to our database, pass in your MySQL information for username and password
 let sequelize;
 
