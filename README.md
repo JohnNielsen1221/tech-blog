@@ -31,6 +31,10 @@ You will first land on the login page. If you have yet to create a login, you ca
 
 ## Screenshots
 ![Tech Screenshot 1](public/screenshots/tech-ss-1.png)
+![Tech Screenshot 2](public/screenshots/tech-ss-2.png)
+![Tech Screenshot 3](public/screenshots/tech-ss-3.png)
+![Tech Screenshot 4](public/screenshots/tech-ss-4.png)
+![Tech Screenshot 5](public/screenshots/tech-ss-5.png)
 
 ## Status
 Project is: _complete_ (for now)
