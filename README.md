@@ -41,7 +41,7 @@ Project is: _complete_ (for now)
 
 ## Links
 Respository Link - https://github.com/JohnNielsen1221/tech-blog
-Deployed on Heroku - https://sleepy-badlands-17864.herokuapp.com/dashboard
+Deployed on Heroku - https://sleepy-badlands-17864.herokuapp.com
 
 
 ## License
